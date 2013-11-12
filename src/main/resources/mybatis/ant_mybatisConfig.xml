@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="DefualtJava5" targetRuntime="MyBatis3">
+		<property name="suppressTypeWarnings" value="true" />
+		<property name="suppressAllComments" value="true" />  
+		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+
+		<plugin type="org.mybatis.generator.plugins.MapperConfigPlugin">
+			<property name="targetPackage" value="com.dylan" />
+			<property name="targetProject" value="src\main\java" />
+		</plugin>
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost/webportal" userId="root" password="mysql">
+		</jdbcConnection>
+		<javaModelGenerator targetPackage="com.dylan.model" targetProject="src\main\java">
+			<property name="enableSubPackages" value="false" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="com.dylan.dao" implementationPackage="com.dylan.dao.impl" targetProject="src\main\java">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+			
+		<table schema="webportal" tableName="portal_document"> 
+			<generatedKey column="doc_id" sqlStatement="SELECT LAST_INSERT_ID();" identity="true" ></generatedKey> 
+		</table>
+	</context>
+</generatorConfiguration>
